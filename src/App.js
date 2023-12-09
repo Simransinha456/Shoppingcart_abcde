@@ -5,8 +5,6 @@ import Auth from "../src/pages/auth.js";
 import CreateRecipe from "../src/pages/create-recipe.js";
 import SavedRecipe from "../src/pages/saved-recipe.js";
 import Navbar from './components/navbar.js';
-import Login from './components/login.js';
-import Register from './components/register.js';
 
 
 function App() {
@@ -14,13 +12,11 @@ function App() {
     <div className="App">
     <Router>
       <Navbar/>
-      <Login />
-      <Register />
       <Routes>
         <Route path="/" element = {<Home />} />
         <Route path='/create-recipe' element = {<CreateRecipe />} />
         <Route path='/saved-recipe' element = {<SavedRecipe />} />
-        {/* <Route path='/auth' element = {<Auth />} /> */}
+        <Route path='/auth' element = {<Auth />} />
         
       </Routes>
     </Router>

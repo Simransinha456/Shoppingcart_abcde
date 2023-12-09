@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Form from './form'
 import {useCookies} from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -26,14 +25,21 @@ function Login() {
 
     }
     return (
-        <Form 
-        username = {username}
-        setUsername = {setUsername}
-        password = {password}
-        setPassword = {setPassword} 
-        label= "Login" 
-        onSubmit= {onSubmit}
-         />
+        <div className='auth-container'>
+            <form onSubmit= {onSubmit}>
+                <h2> Login</h2>
+                <div className='form-group'>
+                    <label for="username"> Username: </label>
+                    <input type='text' id="username" value= {username} onChange={(event) => setUsername(event.target.value)} />
+                </div>
+
+                <div className='form-group'>
+                    <label for="password"> Password: </label>
+                    <input type='password' id="password" value= {password} onChange={(event) => setPassword(event.target.value)} />
+                </div>
+                <button type='submit'>Login</button>
+            </form>
+        </div>
     )
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Form from "../components/form.js"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,20 +13,28 @@ function Register() {
         try {
             await axios.post("http://localhost:8000/auth/register", {username, password});
             alert ("Registration completed! Please Login");
-            navigate("/login")
+            navigate("/auth")
         }
         catch(error) {
             console.log(error);
         }
     };
     return (
-        <Form 
-        username = {username}
-        setUsername = {setUsername}
-        password = {password}
-        setPassword = {setPassword} 
-        label = "Register" 
-        onSubmit = {onSubmit} />
+        <div className='auth-container'>
+            <form onSubmit= {onSubmit}>
+                <h2> Register</h2>
+                <div className='form-group'>
+                    <label for="username"> Username: </label>
+                    <input type='text' id="username" value= {username} onChange={(event) => setUsername(event.target.value)} />
+                </div>
+
+                <div className='form-group'>
+                    <label for="password"> Password: </label>
+                    <input type='password' id="password" value= {password} onChange={(event) => setPassword(event.target.value)} />
+                </div>
+                <button type='submit'>Register</button>
+            </form>
+        </div>
 
     )
 }
