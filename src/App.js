@@ -1,9 +1,10 @@
+
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from "../src/pages/home.js";
 import Auth from "../src/pages/auth.js";
-import CreateRecipe from "../src/pages/create-recipe.js";
-import SavedRecipe from "../src/pages/saved-recipe.js";
+import CreateRecipe from "./pages/create-recipe.js";
+import SavedRecipe from "./pages/saved-recipe.js";
 import Navbar from './components/navbar.js';
 
 

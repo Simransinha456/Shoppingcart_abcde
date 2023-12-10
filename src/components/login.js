@@ -14,6 +14,7 @@ function Login() {
         event.preventDefault();
         try{
           const response = await axios.post("http://localhost:8000/auth/login", {username, password});
+          console.log(response.data.token)
 
           setCookies("access_token", response.data.token);
           window.localStorage.setItem("userID", response.data.userID);

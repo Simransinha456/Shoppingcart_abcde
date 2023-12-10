@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import useGetUserID from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';
+import { Cookies, useCookies } from 'react-cookie';
 
 function CreateRecipe() {
   const userID = useGetUserID();
+  const [cookies, setCookies] = useCookies(["access_token"])
 
   const [recipe, setRecipe] = useState({
     name: "",
@@ -43,7 +45,7 @@ function CreateRecipe() {
         return alert("you have to login first then create Recipe");
       }
       recipe.userOwner = a;
-      const response = await axios.post("http://localhost:8000/recipes", { ...recipe });
+      const response = await axios.post("http://localhost:8000/recipes", { ...recipe },{header:{authorization: Cookies.access_token}});
       console.log(response.data)
       alert("Recipe created");
       navigate("/");
@@ -56,7 +58,7 @@ function CreateRecipe() {
   return (
     <div className='create-recipe'>
       <h2>Create Recipe</h2>
-      <form onSubmit = {onSubmit}>
+      {cookies.access_token ? (<form onSubmit = {onSubmit}>
         <label htmlFor="name">Name</label>
         <input type='text' id='name' name='name' onChange={handleChange}></input>
 
@@ -82,7 +84,7 @@ function CreateRecipe() {
         <input type='number' id='cookingTime' name='cookingTime' onChange={handleChange}></input>
 
         <button type="submit">Create Recipe</button>
-      </form>
+      </form>):(<h1>Login to create</h1>)}
     </div>
   );
 }

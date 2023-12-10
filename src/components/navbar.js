@@ -1,26 +1,38 @@
-import React from 'react'
-import{Link} from 'react-router-dom'
-import{useCookies} from 'react-cookie'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import "./navbar.css"
 
 function Navbar() {
   const [cookies, setCookies] = useCookies(["access_token"]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const Logout = () => {
     setCookies("access_token", "");
     window.localStorage.removeItem("userID");
-    navigate ("/auth");
-
+    navigate("/auth");
   };
+
   return (
     <div className='navbar'>
+      <div className='navbar-left'>
+        <h1>My Logo</h1>
+      </div>
+      <div className='navbar-right'>
         <Link to="/">Home</Link>
         <Link to="/create-recipe">Create Recipe</Link>
-        <Link to="/saved-recipe">Saved Recipe</Link>
-        {!cookies.access_token ? (<Link to="/auth">Login/Register</Link>):<button>Logout</button>}
-        </div>
-  )
+        {!cookies.access_token ? (
+          <Link to="/auth">Login/Register</Link>
+        ) : (
+          <div className='button'>
+            <Link to="/saved-recipe">Saved Recipe</Link>
+            <button onClick={Logout}>Logout</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;

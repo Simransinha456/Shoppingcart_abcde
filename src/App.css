@@ -12,6 +12,7 @@
     padding: 0;
     background-image: url(https://foodphotographyacademy.co/wp-content/uploads/2021/08/Blur-Background-AFTER.jpg);
     background-size: cover;
+    /* background: linear-gradient(to right, #7c4d51, #b39b9b); */
   }
   
   .auth {

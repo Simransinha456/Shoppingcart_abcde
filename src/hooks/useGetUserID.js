@@ -1,13 +1,5 @@
-import React from 'react';
-
-function useGetUserID() {
-  const userID = window.localStorage.getItem("userID");
-
-  return (
-    <div>
-      useGetUserID: {userID}
-    </div>
-  );
+const useGetUserID = () => {
+  return window.localStorage.getItem("userID");
 }
 
 export default useGetUserID;
