@@ -2,7 +2,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 5px;
   }
 
   .centre h1{
@@ -15,7 +14,7 @@
     background-color: #b68989;
     /* border-radius: 10px; */
     overflow: hidden;
-    width: 300px; 
+    width: 315px; 
     height: 540px; 
     transition: transform 0.3s ease-in-out;
     margin-bottom: 15px;
@@ -53,6 +52,7 @@
 
   .card p {
     font-size: 14px;
+    font-weight: 500;
     margin-top: 10px;
   }
   
