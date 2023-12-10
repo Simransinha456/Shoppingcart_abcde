@@ -56,7 +56,7 @@ function CreateRecipe() {
   }
 
   return (
-    <div className='create-recipe'>
+    <div className='create-recipe' style={{backgroundColor:"#b68989"}}>
       <h2>Create Recipe</h2>
       {cookies.access_token ? (<form onSubmit = {onSubmit}>
         <label htmlFor="name">Name</label>
@@ -81,7 +81,7 @@ function CreateRecipe() {
         <input type='text' id='imageUrl' name='imageUrl' onChange={handleChange}></input>
 
         <label htmlFor="cookingTime">Cooking Time (minutes)</label>
-        <input type='number' id='cookingTime' name='cookingTime' onChange={handleChange}></input>
+        <input type='number' id='cookingTime' name='cookingTime' onChange={handleChange}></input> <br/>
 
         <button type="submit">Create Recipe</button>
       </form>):(<h1>Login to create</h1>)}

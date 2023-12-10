@@ -1,11 +1,10 @@
-/* Add this CSS in your stylesheet */
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #333;
+    background-color: #202020;
     color: white;
   }
   
