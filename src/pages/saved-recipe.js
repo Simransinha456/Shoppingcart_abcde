@@ -3,11 +3,21 @@ import useGetUserID from "../hooks/useGetUserID.js"
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import "./saved-recipe.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SavedRecipes = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [cookies, setcookies] = useCookies("access_token");
   const userID = useGetUserID();
+
+  const toastVariables = {
+    position: "top-right", 
+    autoClose: 1000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   useEffect(() => {
     const fetchSavedRecipes = async () => {
@@ -15,14 +25,23 @@ const SavedRecipes = () => {
         const response = await axios.get(
           `http://localhost:8000/recipes/savedRecipes/${userID}`
         );
-        setSavedRecipes(response.data.savedRecipes);
+        setSavedRecipes(response.data.savedRecipes);        
       } catch (err) {
         console.log(err);
       }
     };
 
     fetchSavedRecipes();
-  }, []);
+  }, [userID]);
+
+    const handleDelete = async (recipeID) => {
+      const data = await axios.put(`http://localhost:8000/recipes/remove/${userID}/${recipeID}`);
+      console.log(data.data)
+      setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID));
+
+      toast.success("Recipe Removed Successfully" , toastVariables);
+
+    }
   return (
     <div className="mainbox">
       {cookies.access_token ? <h1>Saved Recipes</h1> : <h1>Login first</h1>}
@@ -33,7 +52,7 @@ const SavedRecipes = () => {
               <h2>{recipe.name}</h2>
             </div>
             <p>{recipe.description}</p>
-            <span><button className="Remove"> Remove </button></span>
+            <span><button onClick={() => handleDelete(recipe._id)} className="Remove"> Remove </button></span>
 
             <p>{recipe.instructions}</p>
             <img src={recipe.imageUrl} alt={recipe.name} />
@@ -45,6 +64,7 @@ const SavedRecipes = () => {
 
         ))}
       </ul>
+      <ToastContainer />
     </div>
   );
 };

@@ -3,10 +3,20 @@ import axios from 'axios'
 import useGetUserID from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';
 import { Cookies, useCookies } from 'react-cookie';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CreateRecipe() {
   const userID = useGetUserID();
   const [cookies, setCookies] = useCookies(["access_token"])
+
+  const toastVariables = {
+    position: "top-right", 
+    autoClose: 1000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   const [recipe, setRecipe] = useState({
     name: "",
@@ -37,23 +47,26 @@ function CreateRecipe() {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] });
   };
 
-  const onSubmit =async (event)=>{
+  const onSubmit = async (event) => {
     event.preventDefault();
-    try{
+    try {
       const a = window.localStorage.getItem("userID");
       if (a == null) {
-        return alert("you have to login first then create Recipe");
+        return alert("you have to log in first then create Recipe");
       }
+  
       recipe.userOwner = a;
-      const response = await axios.post("http://localhost:8000/recipes", { ...recipe },{header:{authorization: Cookies.access_token}});
-      console.log(response.data)
-      alert("Recipe created");
+      const response = await axios.post("http://localhost:8000/recipes", { ...recipe }, { headers: { authorization: Cookies.access_token } });
+      console.log(response.data);
+  
+      // Show toast notification
+      toast.success("Recipe Created Successfully", toastVariables);
+  
       navigate("/");
-    } catch (error){
-      console.log("error", error)
+    } catch (error) {
+      console.error("Error creating recipe:", error);
     }
-
-  }
+  };
 
   return (
     <div className='create-recipe' style={{backgroundColor:"#b68989"}}>
@@ -85,6 +98,7 @@ function CreateRecipe() {
 
         <button type="submit">Create Recipe</button>
       </form>):(<h1>Login to create</h1>)}
+      <ToastContainer />
     </div>
   );
 }

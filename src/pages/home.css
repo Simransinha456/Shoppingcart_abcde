@@ -56,3 +56,8 @@
     margin-top: 10px;
   }
   
+  .savedButton {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed; /* Optional: Disable the cursor on the button */
+  }

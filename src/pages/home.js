@@ -3,6 +3,9 @@ import useGetUserID from "../hooks/useGetUserID.js";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import "./home.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -10,6 +13,14 @@ const Home = () => {
   const [cookies, _] = useCookies(["access_token"]);
 
   const userID = useGetUserID();
+
+  const toastVariables = {
+    position: "top-right", 
+    autoClose: 1000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -45,6 +56,8 @@ const Home = () => {
       }, 
       {headers: {authorization: cookies.access_token}});
       setSavedRecipes(response.data.savedRecipes);
+
+      toast.success("Recipe Saved Successfully" , toastVariables);
     } catch (err) {
       console.log(err);
     }
@@ -77,6 +90,7 @@ const Home = () => {
           </div>
         ))}
       </ul>
+      <ToastContainer />
     </div>
   );
 };
