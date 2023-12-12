@@ -1,7 +1,7 @@
 /* saved-recipe.css */
 .mainbox h1 {
     text-align: center;
-    color: rgb(196, 193, 193);
+    color: rgb(225, 222, 222);
 }
 .saveMain {
   list-style: none;
@@ -20,7 +20,8 @@
   margin: 0 10px 50px 0; 
   width: 280px; 
   height: 530px;
-  background-color: #b68989;
+  background-color: #c89494;
+  font-weight: 600;
 
 }
 
@@ -41,7 +42,7 @@
    
 }
 button {
-    background-color: #9e5966;
+    background-color: #c16767;
     color: white;
     border: none;
     padding: 8px 12px;
