@@ -56,7 +56,7 @@ function CreateRecipe() {
       }
   
       recipe.userOwner = a;
-      const response = await axios.post("http://localhost:8000/recipes", { ...recipe }, { headers: { authorization: Cookies.access_token } });
+      const response = await axios.post("https://mern-recipe-backend-six.vercel.app/recipes", { ...recipe }, { headers: { authorization: Cookies.access_token } });
       console.log(response.data);
   
       // Show toast notification

@@ -23,7 +23,7 @@ const SavedRecipes = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/recipes/savedRecipes/${userID}`
+          `https://mern-recipe-backend-six.vercel.app/recipes/savedRecipes/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);        
       } catch (err) {
@@ -35,7 +35,7 @@ const SavedRecipes = () => {
   }, [userID]);
 
     const handleDelete = async (recipeID) => {
-      const data = await axios.put(`http://localhost:8000/recipes/remove/${userID}/${recipeID}`);
+      const data = await axios.put(`https://mern-recipe-backend-six.vercel.app/recipes/remove/${userID}/${recipeID}`);
       console.log(data.data)
       setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID));
 

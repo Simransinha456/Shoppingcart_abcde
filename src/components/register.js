@@ -11,7 +11,7 @@ function Register() {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:8000/auth/register", {username, password});
+            await axios.post("https://mern-recipe-backend-six.vercel.app/auth/register", {username, password});
             alert ("Registration completed! Please Login");
             navigate("/auth")
         }

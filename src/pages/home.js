@@ -50,7 +50,7 @@ const Home = () => {
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put("http://localhost:8000/recipes", {
+      const response = await axios.put("https://mern-recipe-backend-six.vercel.app/recipes", {
         recipeID,
         userID,
       }, 
