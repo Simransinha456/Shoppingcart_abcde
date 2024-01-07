@@ -25,7 +25,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/recipes");
+        const response = await axios.get("https://mern-recipe-backend-six.vercel.ap/recipes");
         setRecipes(response.data);
       } catch (err) {
         console.log(err);
@@ -35,7 +35,7 @@ const Home = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/recipes/savedRecipes/ids/${userID}`
+          `https://mern-recipe-backend-six.vercel.ap/recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
