@@ -26,6 +26,8 @@ const Home = () => {
     const fetchRecipes = async () => {
       try {
         const response = await axios.get("https://mern-recipe-backend-six.vercel.ap/recipes");
+        // const response = await axios.get("http://localhost:8000/recipes");
+        console.log(response.data)
         setRecipes(response.data);
       } catch (err) {
         console.log(err);
@@ -69,7 +71,7 @@ const Home = () => {
     <div className="centre">
       <h1>Explore New Recipes</h1>
       <ul className="cardMain">
-        {recipes.map((recipe) => (
+        {recipes?.map((recipe) => (
           <div className="card">
           <li key={recipe._id}>
             <div>
