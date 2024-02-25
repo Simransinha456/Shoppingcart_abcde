@@ -11,7 +11,7 @@ function CreateRecipe() {
   const [cookies, setCookies] = useCookies(["access_token"])
 
   const toastVariables = {
-    position: "top-right", 
+    position: "top-right",
     autoClose: 1000,
     pauseOnHover: true,
     draggable: true,
@@ -28,12 +28,12 @@ function CreateRecipe() {
   });
 
   const navigate = useNavigate();
- 
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name,value)
+    console.log(name, value)
     setRecipe({ ...recipe, [name]: value });
-  }; 
+  };
 
   const handleIngredientsChange = (event, idx) => {
     const { value } = event.target;
@@ -54,14 +54,14 @@ function CreateRecipe() {
       if (a == null) {
         return alert("you have to log in first then create Recipe");
       }
-  
+
       recipe.userOwner = a;
       const response = await axios.post("https://mern-recipe-backend-six.vercel.app/recipes", { ...recipe }, { headers: { authorization: Cookies.access_token } });
       console.log(response.data);
-  
+
       // Show toast notification
       toast.success("Recipe Created Successfully", toastVariables);
-  
+
       navigate("/");
     } catch (error) {
       console.error("Error creating recipe:", error);
@@ -69,9 +69,9 @@ function CreateRecipe() {
   };
 
   return (
-    <div className='create-recipe' style={{backgroundColor:"#b68989"}}>
+    <div className='create-recipe' style={{ backgroundColor: "#b68989" }}>
       <h2>Create Recipe</h2>
-      {cookies.access_token ? (<form onSubmit = {onSubmit}>
+      {cookies.access_token ? (<form onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
         <input type='text' id='name' name='name' onChange={handleChange}></input>
 
@@ -94,10 +94,10 @@ function CreateRecipe() {
         <input type='text' id='imageUrl' name='imageUrl' onChange={handleChange}></input>
 
         <label htmlFor="cookingTime">Cooking Time (minutes)</label>
-        <input type='number' id='cookingTime' name='cookingTime' onChange={handleChange}></input> <br/>
+        <input type='number' id='cookingTime' name='cookingTime' onChange={handleChange}></input> <br />
 
         <button type="submit">Create Recipe</button>
-      </form>):(<h1>Login to create</h1>)}
+      </form>) : (<h1>Login to create</h1>)}
       <ToastContainer />
     </div>
   );

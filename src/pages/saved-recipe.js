@@ -12,7 +12,7 @@ const SavedRecipes = () => {
   const userID = useGetUserID();
 
   const toastVariables = {
-    position: "top-right", 
+    position: "top-right",
     autoClose: 1000,
     pauseOnHover: true,
     draggable: true,
@@ -25,7 +25,7 @@ const SavedRecipes = () => {
         const response = await axios.get(
           `https://mern-recipe-backend-six.vercel.app/recipes/savedRecipes/${userID}`
         );
-        setSavedRecipes(response.data.savedRecipes);        
+        setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
         console.log(err);
       }
@@ -34,14 +34,14 @@ const SavedRecipes = () => {
     fetchSavedRecipes();
   }, [userID]);
 
-    const handleDelete = async (recipeID) => {
-      const data = await axios.put(`https://mern-recipe-backend-six.vercel.app/recipes/remove/${userID}/${recipeID}`);
-      console.log(data.data)
-      setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID));
+  const handleDelete = async (recipeID) => {
+    const data = await axios.put(`https://mern-recipe-backend-six.vercel.app/recipes/remove/${userID}/${recipeID}`);
+    console.log(data.data)
+    setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID));
 
-      toast.success("Recipe Removed Successfully" , toastVariables);
+    toast.success("Recipe Removed Successfully", toastVariables);
 
-    }
+  }
   return (
     <div className="mainbox">
       {cookies.access_token ? <h1>Saved Recipes</h1> : <h1>Login first</h1>}

@@ -33,8 +33,8 @@ function Login() {
                 setCookies('access_token', response.data.token);
                 window.localStorage.setItem('userID', response.data.userID);
                 // alert("User login successfully");
-                toast.success('User login successfully',{duration: 1000}, toastVariables); 
-                // navigate('/');
+                toast.success('User login successfully', { duration: 1000 }, toastVariables);
+                navigate('/');
             }
         } catch (error) {
             console.log(error);
