@@ -123,3 +123,9 @@ p {
   max-width: 400px;
   font-size: 12px;
 }
+.auth-container a, p{
+  font-size: 16px;
+}
+
+.auth-container a:hover{
+color: rgb(235, 190, 42);}

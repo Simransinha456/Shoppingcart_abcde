@@ -13,6 +13,7 @@ function Register() {
         try {
             await axios.post("https://mern-recipe-backend-six.vercel.app/auth/register", { username, password });
             alert("Registration completed! Please Login");
+            navigate("/login")
             // navigate("/auth")
         }
         catch (error) {
@@ -25,14 +26,15 @@ function Register() {
                 <h2> Register</h2>
                 <div className='form-group'>
                     <label for="username"> Username: </label>
-                    <input type='text' id="username" value={username} onChange={(event) => setUsername(event.target.value)} />
+                    <input type='text' id="username" placeholder='username' value={username} onChange={(event) => setUsername(event.target.value)} />
                 </div>
 
                 <div className='form-group'>
                     <label for="password"> Password: </label>
-                    <input type='password' id="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+                    <input type='password' placeholder='password' id="password" value={password} onChange={(event) => setPassword(event.target.value)} />
                 </div>
                 <button type='submit'>Register</button>
+                <p>Already have an account ?<a href='/login' className=''>Signin</a></p>
             </form>
         </div>
     )

@@ -12,7 +12,7 @@ function Navbar() {
   const Logout = () => {
     setCookies("access_token", "");
     window.localStorage.removeItem("userID");
-    navigate("/auth");
+    navigate("/login");
   };
 
   return (
@@ -24,7 +24,7 @@ function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/create-recipe">Create Recipe</Link>
         {!cookies.access_token ? (
-          <Link to="/auth">Login/Register</Link>
+          <Link to="/login">Login/Register</Link>
         ) : (
           <div className='button'>
             <Link to="/saved-recipe">Saved Recipe</Link>

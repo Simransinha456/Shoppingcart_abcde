@@ -47,14 +47,16 @@ function Login() {
                 <h2> Login</h2>
                 <div className="form-group">
                     <label htmlFor="username"> Username: </label>
-                    <input type="text" id="username" value={username} onChange={(event) => setUsername(event.target.value)} />
+                    <input type="text" placeholder='username' id="username" value={username} onChange={(event) => setUsername(event.target.value)} />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="password"> Password: </label>
-                    <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+                    <input type="password" placeholder='password' id="password" value={password} onChange={(event) => setPassword(event.target.value)} />
                 </div>
                 <button type="submit">Login</button>
+                <p>Create new account<a href='/register'>Register</a></p>
+                
             </form>
             <ToastContainer />
         </div>
