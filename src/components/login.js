@@ -23,7 +23,7 @@ function Login() {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('https://mern-recipe-backend-six.vercel.app/auth/login', { username, password });
+            const response = await axios.post('http://localhost:8000/auth/login', { username, password });
 
             if (response.data.message === "User doesn't exists") {
                 toast.error("User doesn't exist", toastVariables);
@@ -34,7 +34,7 @@ function Login() {
                 window.localStorage.setItem('userID', response.data.userID);
                 // alert("User login successfully");
                 toast.success('User login successfully', { duration: 1000 }, toastVariables);
-                navigate('/');
+                navigate('/'); 
             }
         } catch (error) {
             console.log(error);

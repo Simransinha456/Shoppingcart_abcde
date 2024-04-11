@@ -56,7 +56,7 @@ function CreateRecipe() {
       }
 
       recipe.userOwner = a;
-      const response = await axios.post("https://mern-recipe-backend-six.vercel.app/recipes", { ...recipe }, { headers: { authorization: Cookies.access_token } });
+      const response = await axios.post("http://localhost:8000/recipes", { ...recipe }, { headers: { authorization: Cookies.access_token } });
       console.log(response.data);
 
       // Show toast notification
@@ -70,7 +70,7 @@ function CreateRecipe() {
 
   return (
     <div className='create-recipe' style={{ backgroundColor: "#b68989" }}>
-      <h2>Create Recipe</h2>
+      <h2>Create Items</h2>
       {cookies.access_token ? (<form onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
         <input type='text' id='name' name='name' onChange={handleChange}></input>
@@ -85,18 +85,12 @@ function CreateRecipe() {
             onChange={(event) => handleIngredientsChange(event, idx)}
           />
         ))}
-        <button onClick={addIngredients} type="button">Add ingredients</button>
-
-        <label htmlFor="instructions">Instructions</label>
-        <textarea id='instructions' name='instructions' onChange={handleChange}></textarea>
+        <button onClick={addIngredients} type="button">Add details</button>
 
         <label htmlFor="imageUrl">Image URL</label>
         <input type='text' id='imageUrl' name='imageUrl' onChange={handleChange}></input>
 
-        <label htmlFor="cookingTime">Cooking Time (minutes)</label>
-        <input type='number' id='cookingTime' name='cookingTime' onChange={handleChange}></input> <br />
-
-        <button type="submit">Create Recipe</button>
+        <button type="submit">Add Product</button>
       </form>) : (<h1>Login to create</h1>)}
       <ToastContainer />
     </div>

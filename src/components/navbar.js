@@ -22,12 +22,13 @@ function Navbar() {
       </div>
       <div className='navbar-right'>
         <Link to="/">Home</Link>
-        <Link to="/create-recipe">Create Recipe</Link>
+        <Link to="/create-recipe">Create Items</Link>
         {!cookies.access_token ? (
           <Link to="/login">Login/Register</Link>
         ) : (
           <div className='button'>
-            <Link to="/saved-recipe">Saved Recipe</Link>
+            <Link to="/saved-recipe">Add to cart</Link>
+            <Link to="/orders">Orders</Link> 
             <button onClick={Logout}>Logout</button>
           </div>
         )}

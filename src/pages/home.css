@@ -7,19 +7,14 @@
 .centre h1 {
   text-align: center;
   color: rgb(255, 255, 255);
-
 }
 
 .card {
   overflow: hidden;
   width: 315px;
-  height: 540px;
+  height: 470px;
   transition: transform 0.3s ease-in-out;
   margin-bottom: 15px;
-}
-
-.instructions p {
-  color: rgb(229, 228, 228);
 }
 
 h5 {
@@ -33,10 +28,10 @@ h5 {
   background: rgb(71, 57, 52);
 }
 
-.card h2 {
-  margin-bottom: 5px;
-  font-size: 23px;
+.card h3 {
+  font-size: 18px;
   color: #fbfafa;
+  margin-top: -2px;
 }
 
 .card button {
@@ -55,7 +50,7 @@ h5 {
 
 .card img {
   width: 100%;
-  height: 250px;
+  height: 350px;
   object-fit: cover;
   border-bottom: 1px solid #fffdfd;
 }
@@ -63,5 +58,4 @@ h5 {
 .card p {
   font-size: 14px;
   font-weight: 350;
-  margin-top: 10px;
 }

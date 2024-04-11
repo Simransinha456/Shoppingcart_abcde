@@ -8,6 +8,7 @@ import SavedRecipe from "./pages/saved-recipe.js";
 import Navbar from './components/navbar.js';
 import Register from './components/register.js';
 import Login from './components/login.js';
+import Order from './pages/order.js';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path='/create-recipe' element={<CreateRecipe />} />
           <Route path='/saved-recipe' element={<SavedRecipe />} />
+          <Route path='/orders' element={<Order />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           {/* <Route path='/auth' element={<Auth />} /> */}

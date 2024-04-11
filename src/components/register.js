@@ -7,17 +7,15 @@ function Register() {
     const navigate = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [email, setEmail] = useState("");
 
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("https://mern-recipe-backend-six.vercel.app/auth/register", { username, password, email });
+            await axios.post("http://localhost:8000/auth/register", { username, password });
             alert("Registration completed! Please Login");
-
             navigate("/login")
         }
-        catch (error) {
+        catch (error) { 
             console.log(error);
         }
     };
@@ -35,10 +33,6 @@ function Register() {
                     <input type='password' placeholder='password' id="password" value={password} onChange={(event) => setPassword(event.target.value)} />
                 </div>
 
-                <div className='form-group'>
-                    <label for="email"> Email: </label>
-                    <input type='email' placeholder='email' id="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-                </div>
                 <button type='submit'>Register</button>
                 <p>Already have an account ?<a href='/login' className=''>Signin</a></p>
             </form>
