@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useGetUserID from "../hooks/useGetUserID.js";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import "./saved-recipe.css";
+import "./add-to-cart.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,7 +22,7 @@ const Order = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        console.log(userID,"=============")
+        // console.log(userID,"=============")
         const response = await axios.get(`http://localhost:8000/orders/${userID}`);
         setOrder(response.data.data);
       } catch (err) {
@@ -51,7 +51,7 @@ const Order = () => {
   };
   return (
     <div className="mainbox">
-      {cookies.access_token ? <h1>Saved Products</h1> : <h1>Login first</h1>}
+      {cookies.access_token ? <h1>Your Orders</h1> : <h1>Login first</h1>}
       <ul className="saveMain">
         {order?.map((recipe,index) => (
           <li key={recipe._id}>
@@ -69,7 +69,7 @@ const Order = () => {
               </button>
             </span> */}
 
-            <img src={recipe.imageUrl} alt={recipe.name} />
+            <img src={recipe.imageUrl} alt={recipe.name}  style={{height:"460px"}}/>
             <div style={{ display: "flex", alignItems: "center" }}></div>
             {/* {savedRecipes.length > 0 && (
               <button

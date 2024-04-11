@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import "./navbar.css"
-import logo from "../components/logo1.png"
+import logo from "../components/logo2.png"
 
 function Navbar() {
   const [cookies, setCookies] = useCookies(["access_token"]);
@@ -18,16 +18,15 @@ function Navbar() {
   return (
     <div className='navbar'>
       <div className='navbar-left'>
-        <img src={logo} alt='Logo' style={{ height: "50px", width: "210px", margin: "10px" }} />
+        <img src={logo} alt='Logo' style={{ height: "50px", width: "150px", margin: "10px" }} />
       </div>
       <div className='navbar-right'>
         <Link to="/">Home</Link>
-        <Link to="/create-recipe">Create Items</Link>
         {!cookies.access_token ? (
           <Link to="/login">Login/Register</Link>
         ) : (
           <div className='button'>
-            <Link to="/saved-recipe">Add to cart</Link>
+            <Link to="/add-to-cart">Add to cart</Link>
             <Link to="/orders">Orders</Link> 
             <button onClick={Logout}>Logout</button>
           </div>

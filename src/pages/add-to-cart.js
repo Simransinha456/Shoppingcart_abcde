@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import useGetUserID from "../hooks/useGetUserID.js";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import "./saved-recipe.css";
+import "./add-to-cart.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const SavedRecipes = () => {
+const AddtoCart = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [cookies, setcookies] = useCookies("access_token");
   const userID = useGetUserID();
@@ -55,7 +55,7 @@ const SavedRecipes = () => {
         { headers: { authorization: cookies.access_token } }
       );
       console.log(response.data);
-      toast.success("Items Saved Successfully", toastVariables);
+      toast.success("Items saved in your orders successfully", toastVariables);
     } catch (err) {
       console.log(err);
     }
@@ -100,4 +100,4 @@ const SavedRecipes = () => {
   );
 };
 
-export default SavedRecipes;
+export default AddtoCart;
