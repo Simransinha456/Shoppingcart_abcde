@@ -18,8 +18,6 @@ function App() {
           <Route path='/orders' element={<Order />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-
-
         </Routes>
       </Router>
     </div>

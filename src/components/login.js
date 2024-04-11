@@ -23,7 +23,7 @@ function Login() {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/auth/login', { username, password });
+            const response = await axios.post('https://shoppingcart-backend.vercel.app/auth/login', { username, password });
 
             if (response.data.message === "User doesn't exists") {
                 toast.error("User doesn't exist", toastVariables);

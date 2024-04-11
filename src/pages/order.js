@@ -23,7 +23,7 @@ const Order = () => {
     const fetchOrders = async () => {
       try {
         // console.log(userID,"=============")
-        const response = await axios.get(`http://localhost:8000/orders/${userID}`);
+        const response = await axios.get(`https://shoppingcart-backend.vercel.app/orders/${userID}`);
         setOrder(response.data.data);
       } catch (err) {
         console.log(err);
@@ -36,7 +36,7 @@ const Order = () => {
   const saveToCard = async (recipeID) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/orders",
+        "https://shoppingcart-backend.vercel.app/orders",
         {
           recipeID,
           userID,

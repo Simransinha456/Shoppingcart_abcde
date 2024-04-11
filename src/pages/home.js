@@ -25,7 +25,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/recipes");
+        const response = await axios.get("https://shoppingcart-backend.vercel.app/recipes");
         console.log(response.data)
         setRecipes(response.data);
       } catch (err) {
@@ -36,7 +36,7 @@ const Home = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/recipes/savedRecipes/ids/${userID}`
+          `https://shoppingcart-backend.vercel.app/recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
@@ -51,7 +51,7 @@ const Home = () => {
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put("http://localhost:8000/recipes", {
+      const response = await axios.put("https://shoppingcart-backend.vercel.app/recipes", {
         recipeID,
         userID,
       },
