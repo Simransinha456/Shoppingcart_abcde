@@ -60,10 +60,10 @@ const Home = () => {
         { headers: { authorization: cookies.access_token } }
       );
       setSavedRecipes(response?.data.savedRecipes);
-      toast.success("Recipe saved successfully", toastVariables);
+      toast.success("Item saved successfully", toastVariables);
     } catch (err) {
-      console.error("Error saving recipe:", err);
-      toast.error("Failed to save recipe. Please try again later.", toastVariables);
+      console.error("Error saving item:", err);
+      toast.error("Failed to save item. Please try again later.", toastVariables);
     }
   };
 
@@ -71,7 +71,7 @@ const Home = () => {
 
   return (
     <div className="centre">
-      <h1>Explore New Recipes</h1>
+      <h1>Explore New Dresses</h1>
       {loading ? (
         <div>
         <img src={gif} style={{height:"200px",width:"200px",marginLeft:"50px"}} alt="" />
