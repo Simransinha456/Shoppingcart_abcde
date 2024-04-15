@@ -36,7 +36,7 @@ const AddtoCart = () => {
 
   const handleDelete = async (recipeID) => {
     const data = await axios.put(
-      `http://localhost:8000/recipes/remove/${userID}/${recipeID}`
+      `https://shoppingcart-backend.vercel.app/recipes/remove/${userID}/${recipeID}`
     );
     console.log(data.data);
     setSavedRecipes(savedRecipes.filter((recipe) => recipe._id !== recipeID));
@@ -47,7 +47,7 @@ const AddtoCart = () => {
   const saveToCard = async (recipeID) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/orders",
+        "https://shoppingcart-backend.vercel.app/orders",
         {
           recipeID,
           userID,
